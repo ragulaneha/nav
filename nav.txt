@@ -1,0 +1,184 @@
+
+//res ui
+import'package:flutter/material.dart';
+void main(){
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp( 
+      home:BreakpointLayout(),
+    );
+  }
+}
+class BreakpointLayout extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+     double  width =MediaQuery.of(context).size.width;
+     if(width<600){
+      return Scaffold(
+        appBar: AppBar(
+          title:Text("mobila"),
+        ),
+        body:Center(
+           child:Text("view mobilelayout",style:TextStyle(fontSize:20,color:Colors.blue)) ,
+        ),
+      );
+     } else if(width<1200){
+      return Scaffold(
+        appBar: AppBar(
+          title:Text("tablet"),
+        ),
+        body:Center(
+           child:Text("view tabletlayout",style:TextStyle(fontSize:20,color:Colors.red)) ,
+        ),
+      );
+     } else{
+      return Scaffold(
+        appBar: AppBar(
+          title:Text("desktop"),
+        ),
+        body:Center(
+           child:Text("view desktoplayout",style:TextStyle(fontSize:20,color:Colors.pink)) ,
+        ),
+      );
+     }
+
+  }
+}
+
+
+
+///nav
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FirstScreen(), // Start with FirstScreen
+    );
+  }
+}
+
+class FirstScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate to the second screen when the button is pressed
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SecondScreen()),
+            );
+          },
+          child: Text('Go to Second Screen'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to the first screen
+            Navigator.pop(context);
+          },
+          child: Text('Back to First Screen'),
+        ),
+      ),
+    );
+  }
+}
+////stack
+import 'package:flutter/material.dart';
+void main(){
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home:Scaffold(
+        appBar: AppBar(
+          title:Text("hello"),
+        ),
+       body:Center(
+        child:Stack(
+          alignment: Alignment.center,
+        children:<Widget>[
+          Container(
+          width:333,
+          height:333,
+          color:Colors.pink,
+          child:Text("one"),
+          ),
+          
+            Container(
+              height: 111,
+              width:111,
+              child:Text("two"),
+              color:Colors.blue,
+          ), 
+          
+        ],
+        )
+      
+
+       )
+      )
+    );
+  }
+}
+///roww
+
+import 'package:flutter/material.dart';
+void main(){
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home:Scaffold(
+        appBar: AppBar(
+          title:Text("hello"),
+        ),
+        body:Row(
+          children:<Widget>[
+            Container(
+              height: 222,
+              width: 222,
+              color:Colors.red,
+              child: Text("row1"),
+            ),
+            Container(
+              height: 222,
+              width: 222,
+              color:Colors.blue,
+              child: Text("row2"),
+            ),
+          ],
+          )
+      )
+    );
+  }
+}
